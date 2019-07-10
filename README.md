@@ -6,6 +6,29 @@ This repository contains scripts and results to use and test PASS. The system wa
 
 The code used to validate PASS can be consulted here: <REPOSITORY_URL_TO_ADD>.
 
+## System Requirements
+
+### RAN
+
+For RAN Ubuntu 16.04 (Xenial) was used with 4.15.0-51-lowlatency kernel.
+
+Additional Software (probably incomplete):
+
+```
+apt install python3.7
+```
+
+```
+python3.7 -m pip install numpy scipy
+```
+
+Note: Python3.7 is required due to its time.time_ns() function, since it has higher precision than time.time().
+
+### CN
+
+For CN Ubuntu 18.04 (Bionic) was used with 4.9 kernel. 
+
+Followed instructions in [openair-cn Wiki](https://github.com/OPENAIRINTERFACE/openair-cn/wiki/Basic-Deployment-of-vEPC). 
 
 
 ## bin
