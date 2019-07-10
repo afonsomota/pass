@@ -1,0 +1,4 @@
+#!/bin/ash
+
+ip addr | grep eth | grep inet | awk '{print $2}' | cut -d"/" -f 1
+python udp-server.py
