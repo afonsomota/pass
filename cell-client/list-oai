@@ -1,0 +1,1 @@
+ip addr | grep oaitun | grep inet | awk '{print $7,$2 }' | cut -d'/' -f 1

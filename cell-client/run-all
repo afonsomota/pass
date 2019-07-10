@@ -1,0 +1,44 @@
+#!/bin/bash
+
+name=${1:-default}
+
+nodes=${2:-15}
+
+port=4445
+
+rm ../analitics/server_*
+sudo rm -f ../analitics/client_*
+rm ../analitics/analitics.out
+rm ../analitics/pass.trace
+docker exec cs rm /tmp/client.ts
+
+
+start-pass-tracer /home/oai/analitics/pass.trace > /dev/null 2>&1 &
+
+for i in $(seq 1 $nodes); do
+  
+
+  slice=$((($i-1)%3))
+  echo 10.0.2.$((20+$i-1)):$port $i $slice
+  
+  #UE nodes with IP addresses from 10.0.2.20 + (UE_id-1). Ex: ue 1 -> 10.0.2.20, ue 2 -> 10.0.2.21 ...
+  sudo python3.7 server.py oaitun_ue$i 10.0.2.$((20+$i-1)) $port $l4type > ../analitics/server_$i.log &
+  docker exec cs python3 /app/client.py -a 10.0.2.$((20+$i-1)) -p $port -u $i -c /app/cell-client/slice${slice}_traffic.cfg  &
+
+done
+
+while true; do
+  sleep 5
+  procs=$(ps aux | grep server.py | grep -v grep)
+  if [ -z "$procs" ]; then break; fi
+done
+  
+sudo pkill --signal SIGINT textlog
+
+cd ../analitics
+python3 analitics.py > analitics.out
+for p in *.plot; do gnuplot $p; done
+rm -r $name
+mkdir $name
+cp server_* client_* analitics.out *.dat *.png *.trace $name
+cd -
