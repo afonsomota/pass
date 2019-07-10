@@ -1,0 +1,3 @@
+cd /home/oai/remote_enb_folder/common/utils/T/tracer
+make clean; make
+./textlog -d ../T_messages.txt -OFF -on PASS -raw-time -no-gui > $1

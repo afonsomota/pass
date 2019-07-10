@@ -1,0 +1,44 @@
+#!/bin/bash
+
+version=${1:-new}
+mod=${2:-tracer}
+
+sudo ifconfig enp3s0:lte 192.168.7.100
+
+
+while true; do
+
+echo "Restarting CN..."
+ssh oai@192.168.7.111 start-epc
+
+sudo -u oai screen -S ue -X stuff $'\003'
+sudo -u oai screen -S enb -X stuff $'\003'
+sudo -u oai screen -S tracer -X stuff $'\003'
+
+sleep 60
+
+ssh oai@192.168.7.111 sudo ip route add 10.0.2.0/24 dev spgwu1
+
+echo "Starting RAN..."
+
+if [ $version == new ];then
+cp /home/oai/cell-client/slices.cnf.new /home/oai/cell-client/slices.cnf
+else
+cp /home/oai/cell-client/slices.cnf.old /home/oai/cell-client/slices.cnf
+fi
+sudo -u oai screen -S enb -d -m run_enb $mod > /dev/null
+
+
+sleep 1
+
+sudo -u oai screen -S ue -d -m run_ue > /dev/null 
+
+sleep 120
+
+if [ $(ifconfig | grep oaitun  | wc -l) -lt 9 ]; then 
+  echo "FAILED"
+else
+  break
+fi
+
+done

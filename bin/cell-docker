@@ -1,0 +1,3 @@
+docker stop cs
+docker build -t cell-server /home/oai/docker-server
+docker run --rm -itd --log-driver none -v /home/oai/analitics:/app/analitics -v /home/oai/cell-client:/app/cell-client --cap-add=NET_ADMIN --network bridge-net --ip 192.168.1.231 --mac-address 12:34:12:34:12:34 --name cs cell-server

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cd /home/oai/ue_folder; source oaienv; cd cmake_targets;./run_ue 9 > /dev/null
