@@ -12,6 +12,8 @@ The code used to validate PASS can be consulted here: <REPOSITORY_URL_TO_ADD>.
 
 For RAN Ubuntu 16.04 (Xenial) was used with 4.15.0-51-lowlatency kernel.
 
+Followed instructions from [OAI L2 nFAPI Simulator](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/l2-nfapi-simulator/l2-nfapi-simulator-w-S1-same-machine)
+
 Additional Software (probably incomplete):
 
 ```
