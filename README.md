@@ -6,6 +6,31 @@ This repository contains scripts and results to use and test PASS. The system wa
 
 The code used to validate PASS can be consulted here: <REPOSITORY_URL_TO_ADD>.
 
+## System Requirements
+
+### RAN
+
+For RAN Ubuntu 16.04 (Xenial) was used with 4.15.0-51-lowlatency kernel.
+
+Followed instructions from [OAI L2 nFAPI Simulator](https://gitlab.eurecom.fr/oai/openairinterface5g/wikis/l2-nfapi-simulator/l2-nfapi-simulator-w-S1-same-machine)
+
+Additional Software (probably incomplete):
+
+```
+apt install python3.7
+```
+
+```
+python3.7 -m pip install numpy scipy gnuplot 
+```
+
+Note: Python3.7 is required due to its time.time_ns() function, since it has higher precision than time.time().
+
+### CN
+
+For CN Ubuntu 18.04 (Bionic) was used with 4.9 kernel. 
+
+Followed instructions in [openair-cn Wiki](https://github.com/OPENAIRINTERFACE/openair-cn/wiki/Basic-Deployment-of-vEPC). 
 
 
 ## bin
@@ -47,5 +72,9 @@ In the dockerfile a `route add` command is inserted to add a route to the UEs th
 
 
 This folder contains the master script to run the simulations as well as eNB configurations and the code to run in the UEs (that is the code containing the sockets that attach to UE interfaces).
+
+## analitics
+
+Contains the `analitics.py` script that processes logs and produces data files ready to be used by gnuplot which plots are specified by the `*.plot` files. The scripts for log process and the gnuplot are called in `run-all` 
 
 
