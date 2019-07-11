@@ -21,7 +21,7 @@ apt install python3.7
 ```
 
 ```
-python3.7 -m pip install numpy scipy
+python3.7 -m pip install numpy scipy gnuplot 
 ```
 
 Note: Python3.7 is required due to its time.time_ns() function, since it has higher precision than time.time().
@@ -72,5 +72,9 @@ In the dockerfile a `route add` command is inserted to add a route to the UEs th
 
 
 This folder contains the master script to run the simulations as well as eNB configurations and the code to run in the UEs (that is the code containing the sockets that attach to UE interfaces).
+
+## analitics
+
+Contains the `analitics.py` script that processes logs and produces data files ready to be used by gnuplot which plots are specified by the `*.plot` files. The scripts for log process and the gnuplot are called in `run-all` 
 
 
