@@ -17,11 +17,11 @@ Followed instructions from [OAI L2 nFAPI Simulator](https://gitlab.eurecom.fr/oa
 Additional Software (probably incomplete):
 
 ```
-apt install python3.7
+apt install python3.7 gnuplot 
 ```
 
 ```
-python3.7 -m pip install numpy scipy gnuplot 
+python3.7 -m pip install numpy scipy
 ```
 
 Note: Python3.7 is required due to its time.time_ns() function, since it has higher precision than time.time().
