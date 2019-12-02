@@ -1,0 +1,3 @@
+[submodule "oai-pass"]
+	path = oai-pass
+	url = https://github.com/afonsomota/oai-pass.git
