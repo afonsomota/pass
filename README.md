@@ -1,8 +1,6 @@
 # PASS - Preemption-aware Slice Scheduler
 
-UNDER CONSTRUCTION
-
-This repository contains scripts and results to use and test PASS. The system was tested in Ubuntu 16.04 with low-latency kernel. The scripts take into account most of these folders in the home folder of a user named `oai`. Exceptions are `bin`, that contains binary files that are considered to be in one of the system's `PATH` folder. 
+This repository contains scripts and results to use and test PASS. The system was tested in Ubuntu 16.04 with low-latency kernel. The scripts take into account most of these folders in the home folder of a user named `oai`. Exceptions are `bin`, that contains binary files that are considered to be in one of the system's `PATH` folders. PASS OAI implementation is included as a submodule.
 
 ## System Requirements
 
