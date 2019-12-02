@@ -4,8 +4,6 @@ UNDER CONSTRUCTION
 
 This repository contains scripts and results to use and test PASS. The system was tested in Ubuntu 16.04 with low-latency kernel. The scripts take into account most of these folders in the home folder of a user named `oai`. Exceptions are `bin`, that contains binary files that are considered to be in one of the system's `PATH` folder. 
 
-The code used to validate PASS can be consulted here: <REPOSITORY_URL> (To be added when/if this work is accepted).
-
 ## System Requirements
 
 ### RAN
